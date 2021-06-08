@@ -1,19 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
 import CategoryList from './components/CategoryList';
 
 export default function App() {
+
+  const [category, setCategory] = useState([
+    { id:1, name: 'dog'},
+    { id:2, name: 'cat'},
+    { id:3, name: 'chicken'}
+  ])
+
   return (
-    <View style={styles.container}>
-      <CategoryList/>
-      <CategoryList/>
-      <CategoryList/>
-      <CategoryList/>
-      <CategoryList/>
-      <CategoryList/>
-      <StatusBar style="auto" />
-    </View>
+    <FlatList data={category}
+      renderItem={({ item }) => <CategoryList category={item}/>}
+      keyExtractor={item => `${item.id}`}/> //`${item.id}` to convert from number to string
   );
 }
 

@@ -2,10 +2,11 @@ import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import Paw from '../assets/paw.png';
 
-const Category = () => {
+const Category = (props) => {
+    const {category} = props;
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Category ListItems</Text>
+            <Text style={styles.title}>{category.name}</Text>
             <Image style={styles.categoryImage} source={Paw}/>
         </View>
     )
